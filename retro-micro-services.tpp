@@ -980,8 +980,47 @@ Logging y tracing
 Compilación y despliegue
 --uloff
 --boldoff                 
+
+
+
+---                                                                                              
+* Pipelines
+
 ---
+* Infraestructura como código
+
+---
+* Servidores inmutables
+ 
 
 
-                                                                                              
+--newpage Microservicios19
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+¿Cómo empezar?
+--uloff
+--boldoff                 
+
+
+
+---                                                                                              
+* Pipelines
+
+---
+* Infraestructura como código
+
+---
+* Servidores inmutables
  
