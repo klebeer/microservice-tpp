@@ -480,6 +480,7 @@ Otras iniciativas a lo largo del tiempo
 
 * Popularidad de la tecnología de contenedores (Docker en particular).
 
+---
 * Tecnología de orquestación (como Kubernetes, Mesos, Consul, etc...).
 
 
@@ -499,7 +500,7 @@ Otras iniciativas a lo largo del tiempo
 
 --boldon 
 --ulon
-¿Cuál es problema con los microservicios?
+¿Que retos y problemas tenemos con los microservicios?
 --uloff
 --boldoff
 
@@ -535,7 +536,7 @@ Otras iniciativas a lo largo del tiempo
 
 --boldon 
 --ulon
-¿Cuál es problema con los microservicios?
+¿Que retos y problemas tenemos con los microservicios?
 --uloff
 --boldoff
 
@@ -571,7 +572,7 @@ Otras iniciativas a lo largo del tiempo
 
 --boldon 
 --ulon
-¿Cuál es problema con los microservicios?
+¿Que retos y problemas tenemos con los microservicios?
 --uloff
 --boldoff
 
@@ -594,3 +595,393 @@ Otras iniciativas a lo largo del tiempo
    │     aplicaciones      │─────────────────────┴────────────────────│ organización funciona │
    │     monolíticas?      │                                          │       en silos?       │
    └───────────────────────┘                                          └───────────────────────┘
+
+
+
+--newpage Microservicios10
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+¿Que retos y problemas tenemos con los microservicios?
+--uloff
+--boldoff
+
+
+---
+                                           ┌──────────────────────┐                           
+                                           │Ubicación transparente│                           
+                                           └──────────────────────┘                           
+                                                       ▲                                      
+                                                       │                                      
+                                                       │                                      
+                     ┌──────────────┐      ┌───────────────────────┐       ┌─────────────────┐
+                     │  Repetible   │◀─────│   Un microservicio    │──────▶│ Tamaño correcto │
+                     └──────────────┘      └───────────────────────┘█      └─────────────────┘
+                                            ███████████│█████████████                         
+                                             ┌─────────┴──────────┐                           
+                                             │                    │                           
+                                             ▼                    ▼                           
+                                      ┌─────────────┐       ┌───────────┐                     
+                                      │ Resiliente  │       │ Escalable │                     
+                                      └─────────────┘       └───────────┘                     
+
+
+--newpage Microservicios11
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+Otras consideraciones con microservicios
+--uloff
+--boldoff                                            
+
+
+---
+* Desarrollo  en general
+
+---
+* Enrutamiento y Descubrimiento
+
+---
+* Resiliencia del cliente
+
+---
+* Seguridad
+
+---
+* Logging y tracing
+
+---
+* Compilación y despliegue
+
+
+--newpage Microservicios12
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+Desarrollo  en general
+--uloff
+--boldoff                 
+---
+
+
+                                      ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐                                     
+                                        ┌─────────────┐                                       
+                                      │ │Granularidad │ │                                     
+                                        │del servicio │                                       
+                                      │ └──────┬──────┘ │                                     
+                                               ▼                                              
+                                      │ ┌─────────────┐ │                                     
+                                        │Protocolos de│                                       
+                                      │ │Comunicación │ │                                     
+                                        └──────┬──────┘                                       
+                                      │        ▼        │                                     
+                                        ┌─────────────┐                                       
+                                      │ │Diseño de las│ │                                     
+                                        │ interfaces  │                                       
+                                      │ └──────┬──────┘ │                                     
+                                               ▼                                              
+                                      │ ┌─────────────┐ │                                     
+                                        │ Gestión de  │                                       
+                                      │ │configuración│ │                                     
+                                        └──────┬──────┘                                       
+                                      │        ▼        │                                     
+                                        ┌─────────────┐                                       
+                                      │ │Procesamiento│ │                                     
+                                        │ de eventos  │                                       
+                                      │ └─────────────┘ │                                     
+                                       ─ ─ ─ ─ ─ ─ ─ ─ ─                                                                 
+
+
+--newpage Microservicios13
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+Enrutamiento y Descubrimiento
+--uloff
+--boldoff                 
+---
+
+
+                                 ┌─────────────┐        ┌────────────────┐                    
+                                 │ Cliente Web │        │Microservicio A │                    
+                                 └─────────────┘        └────────────────┘                    
+                                        │    ┌──────────────┐    │                            
+                                        │    │ Enrutamiento │    │                            
+                                        └───▶│ de Servicios │◀───┘                            
+                                             └──────────┬───┘                                 
+                                                 ▲      │                                     
+                                                 │      ▼                                     
+                                             ┌───┴──────────┐                                 
+                                             │Descubrimiento│                                 
+                                  ┌──────────│ de Servicios │────────────┐                    
+                                  │          └──────────────┘            │                    
+                                  │               ▲     ▲                │                    
+                                  │               │     │                │                    
+                                  ▼               │     │                ▼                    
+                     ┌────────────────────────┐   │     │   ┌────────────────────────┐        
+                     │    Microservicio B     │   │     │   │    Microservicio C     │        
+                     │      2 instancias      ├───┘     └───┤      2 instancias      │        
+                     │ ┌─────────┐┌─────────┐ │             │ ┌─────────┐┌─────────┐ │        
+                     │ │         ││         │ │             │ │         ││         │ │        
+                     │ │x.x.0.10 ││x.x.0.11 │ │             │ │x.x.1.30 ││x.x.1.41 │ │        
+                     │ │         ││         │ │             │ │         ││         │ │        
+                     │ └─────────┘└─────────┘ │             │ └─────────┘└─────────┘ │        
+                     └────────────────────────┘             └────────────────────────┘   
+
+
+--newpage Microservicios14
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+Resiliencia del cliente
+--uloff
+--boldoff                 
+---
+
+
+
+                                  ┌─────────────┐           ┌────────────────┐                
+                                  │ Cliente Web │           │Microservicio A │                
+                                  └─────────────┘           └────────────────┘                
+                                         │     ┌────────────────┐    │                        
+                                         │     │  Balanceo del  │    │                        
+                                         └────▶│lado del cliente│◀───┘                        
+                                               ├────────────────┤                             
+                                               │Circuit breaker │                             
+                                               ├────────────────┤                             
+                                               │    Fallback    │                             
+                                               ├────────────────┤                             
+                                               │    Bulkhead    │                             
+                                               ├────────────────┤                             
+                                     ┌─────────┘     ▲     ▲    └───────────┐                 
+                                     │               │     │                │                 
+                                     ▼               │     │                ▼                 
+                        ┌────────────────────────┐   │     │   ┌────────────────────────┐     
+                        │    Microservicio B     │   │     │   │    Microservicio C     │     
+                        │      2 instancias      ├───┘     └───┤      2 instancias      │     
+                        │ ┌─────────┐┌─────────┐ │             │ ┌─────────┐┌─────────┐ │     
+                        │ │         ││         │ │             │ │         ││         │ │     
+                        │ │x.x.0.10 ││x.x.0.11 │ │             │ │x.x.1.30 ││x.x.1.41 │ │     
+                        │ │         ││         │ │             │ │         ││         │ │     
+                        │ └─────────┘└─────────┘ │             │ └─────────┘└─────────┘ │     
+                        └────────────────────────┘             └────────────────────────┘    
+
+
+--newpage Microservicios15
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+Resiliencia del cliente
+--uloff
+--boldoff                 
+---
+
+
+
+                                  ┌─────────────┐           ┌────────────────┐                
+                                  │ Cliente Web │           │Microservicio A │                
+                                  └─────────────┘           └────────────────┘                
+                                         │     ┌────────────────┐    │                        
+                                         │     │  Balanceo del  │    │                        
+                                         └────▶│lado del cliente│◀───┘                        
+                                               ├────────────────┤                             
+                                               │Circuit breaker │                             
+                                               ├────────────────┤                             
+                                               │    Fallback    │                             
+                                               ├────────────────┤                             
+                                               │    Bulkhead    │                             
+                                               ├────────────────┤                             
+                                     ┌─────────┘     ▲     ▲    └───────────┐                 
+                                     │               │     │                │                 
+                                     ▼               │     │                ▼                 
+                        ┌────────────────────────┐   │     │   ┌────────────────────────┐     
+                        │    Microservicio B     │   │     │   │    Microservicio C     │     
+                        │      2 instancias      ├───┘     └───┤      2 instancias      │     
+                        │ ┌─────────┐┌─────────┐ │             │ ┌─────────┐┌─────────┐ │     
+                        │ │         ││         │ │             │ │         ││         │ │     
+                        │ │x.x.0.10 ││x.x.0.11 │ │             │ │x.x.1.30 ││x.x.1.41 │ │     
+                        │ │         ││         │ │             │ │         ││         │ │     
+                        │ └─────────┘└─────────┘ │             │ └─────────┘└─────────┘ │     
+                        └────────────────────────┘             └────────────────────────┘                           
+
+
+--newpage Microservicios16
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+Seguridad
+--uloff
+--boldoff                 
+
+
+
+---
+* Autenticación
+
+---
+* Control de acceso y autorización
+
+---
+* Asegurar APIs y aplicaciones
+
+---
+* No confiar en datos externos ... validar / codificar / sanitizar
+
+---
+* Serialización / Deserialización segura
+
+---
+* Compartir "Secrets" de forma segura
+
+
+
+--newpage Microservicios17
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+Logging y tracing
+--uloff
+--boldoff                 
+---
+
+
+                                                                                              
+   Log Correlation ────┐                                                                      
+                       ▼                                                                      
+                ┌────────────┐ ┌────────────┐ ┌────────────┐ ┌────────────┐  ┌────────────┐   
+                │ Servicio A │ │ Servicio A │ │ Servicio B │ │ Servicio B │  │ Servicio C │   
+                └────────────┘ └────────────┘ └────────────┘ └────────────┘  └────────────┘   
+                       │              │              │              │               │         
+                       │              │              │              │               │         
+                       │              │              │              │               │         
+                       └──────────────┴──────────────┼──────────────┴───────────────┘         
+                                                     │                                        
+                                               .─────▼─────.                                  
+                                              (             )                                 
+                                              ╲`───────────'╱                                 
+                                               ╲           ╱                                  
+                                                ╲         ╱◀──────────── Log Aggregation      
+                                                 ╲       ╱                                    
+                                                  ╲     ╱                                       
+                          Tracing                  ╲   ╱                                        
+                                                     │  
+                                                     ▼                                        
+                      ┌────────────┐              .─────.                                     
+                      │┌──────────┐│◀────────────│.─────.│                                    
+                      ││          ││             │.─────.│◀─────────── Central Data Store     
+                      │└──────────┘│             │.─────.│                                    
+                      └──┬───────┬─┘────────────▶│       │                                    
+                         └───────┘                `─────'                              
+
+
+--newpage Microservicios18
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+Compilación y despliegue
+--uloff
+--boldoff                 
+---
+
+
+                                                                                              
+ 
