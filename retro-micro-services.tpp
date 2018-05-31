@@ -695,8 +695,6 @@ Desarrollo  en general
 --uloff
 --boldoff                 
 ---
-
-
                                       ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐                                     
                                         ┌─────────────┐                                       
                                       │ │Granularidad │ │                                     
@@ -725,6 +723,14 @@ Desarrollo  en general
                                        ─ ─ ─ ─ ─ ─ ─ ─ ─                                                                 
 
 
+---
+--exec sh images.sh images/desingBooks.png
+
+
+
+
+
+
 --newpage Microservicios13
 --fgcolor green
 --boldon
@@ -744,8 +750,6 @@ Enrutamiento y Descubrimiento
 --uloff
 --boldoff                 
 ---
-
-
                                  ┌─────────────┐        ┌────────────────┐                    
                                  │ Cliente Web │        │Microservicio A │                    
                                  └─────────────┘        └────────────────┘                    
@@ -792,9 +796,6 @@ Resiliencia del cliente
 --uloff
 --boldoff                 
 ---
-
-
-
                                   ┌─────────────┐           ┌────────────────┐                
                                   │ Cliente Web │           │Microservicio A │                
                                   └─────────────┘           └────────────────┘                
@@ -841,9 +842,6 @@ Resiliencia del cliente
 --uloff
 --boldoff                 
 ---
-
-
-
                                   ┌─────────────┐           ┌────────────────┐                
                                   │ Cliente Web │           │Microservicio A │                
                                   └─────────────┘           └────────────────┘                
@@ -930,17 +928,13 @@ Seguridad
 Logging y tracing
 --uloff
 --boldoff                 
----
+--- 
 
-
-                                                                                              
    Log Correlation ────┐                                                                      
                        ▼                                                                      
                 ┌────────────┐ ┌────────────┐ ┌────────────┐ ┌────────────┐  ┌────────────┐   
                 │ Servicio A │ │ Servicio A │ │ Servicio B │ │ Servicio B │  │ Servicio C │   
-                └────────────┘ └────────────┘ └────────────┘ └────────────┘  └────────────┘   
-                       │              │              │              │               │         
-                       │              │              │              │               │         
+                └────────────┘ └────────────┘ └────────────┘ └────────────┘  └────────────┘    
                        │              │              │              │               │         
                        └──────────────┴──────────────┼──────────────┴───────────────┘         
                                                      │                                        
@@ -1009,18 +1003,10 @@ Compilación y despliegue
 
 --boldon 
 --ulon
-¿Cómo empezar?
+"Un Caso Práctico"
 --uloff
 --boldoff                 
 
 
 
 ---                                                                                              
-* Pipelines
-
----
-* Infraestructura como código
-
----
-* Servidores inmutables
- 
