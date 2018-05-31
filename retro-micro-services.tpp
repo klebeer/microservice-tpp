@@ -1419,8 +1419,6 @@ Empezar con pasos pequeños:
 ¿Qué podemos hacer?
 --boldoff     
 
-
-
 ---
 
 Siguientes pasos:
@@ -1460,14 +1458,8 @@ Siguientes pasos:
 --uloff
 --boldoff
 
---boldon 
-¿Qué podemos hacer?
---boldoff 
-
 ---  
-Esto es lo que queremos:
-
-
+Arquitectura Objetivo:
                                           │                                    
                   Monolítico              │        Microservicios              
          ┌─────────────────────────────┐  │                                    
@@ -1509,14 +1501,8 @@ Esto es lo que queremos:
 "Un caso práctico"
 --uloff
 --boldoff
-
---boldon 
-¿Qué podemos hacer?
---boldoff     
-
 ---
 Separamos la interfaz de usuario, debería verse exactamente igual a la original:                                                             
-
               ┌─────────────────────────────┐                                  
               │     Interfaz de Usuario     │                                  
               └──────────────┬──────────────┘                                  
@@ -1557,11 +1543,6 @@ Separamos la interfaz de usuario, debería verse exactamente igual a la original
 "Un caso práctico"
 --uloff
 --boldoff
-
---boldon 
-¿Qué podemos hacer?
---boldoff     
-
 ---
 Primer paso a producción:
 
@@ -1608,11 +1589,6 @@ Primer paso a producción:
 "Un caso práctico"
 --uloff
 --boldoff
-
---boldon 
-¿Qué podemos hacer?
---boldoff     
-
 ---
 Segundo paso a producción, quitamos la vieja Interfaz de Usuario:
 
@@ -1654,14 +1630,8 @@ Segundo paso a producción, quitamos la vieja Interfaz de Usuario:
 "Un caso práctico"
 --uloff
 --boldoff
-
---boldon 
-¿Qué podemos hacer?
---boldoff     
-
 ---
 Creamos un nuevo servicio independiente de posición consolidada
-
                                          ┌─────────────────────────────┐                           
                                          │     Interfaz de Usuario     │                           
                                          └─────────────┬───────────────┘                                  
@@ -1700,14 +1670,8 @@ Creamos un nuevo servicio independiente de posición consolidada
 "Un caso práctico"
 --uloff
 --boldoff
-
---boldon 
-¿Qué podemos hacer?
---boldoff     
-
 ---
 Creamos un nuevo servicio independiente de posición consolidada
-
                                          ┌─────────────────────────────┐                           
                                          │     Interfaz de Usuario     │                           
                                          └─────────────┬───────────────┘                                 
@@ -1746,15 +1710,9 @@ Creamos un nuevo servicio independiente de posición consolidada
 --ulon
 "Un caso práctico"
 --uloff
---boldoff
-
---boldon 
-¿Qué podemos hacer?
---boldoff     
-
+--boldoff    
 ---
 Tercer paso a producción, servicio independiente de posición consolidada (dark launch)
-
                           ┌─────────────────────────────┐                                           
                           │     Interfaz de Usuario     │                                           
                           └──────────────┬──────────────┘                                           
@@ -1795,18 +1753,12 @@ Tercer paso a producción, servicio independiente de posición consolidada (dark
 "Un caso práctico"
 --uloff
 --boldoff
-
---boldon 
-¿Qué podemos hacer?
---boldoff     
-
 ---
 Podemos usar un Gateway para un mejor control sobre las peticiones y seguimos validando
                         ┌─────────────────────────────┐                                             
                         │     Interfaz de Usuario     │                                             
                         └─────────────┬───────────────┘                                             
-                                      │  ▲                                                          
-                                      ▼  │                                                          
+                                      ▼  ▲                                                          
                         ┌────────────────┴────────────┐                                             
                         │           Gateway           │                                             
                         └──────────────┬──────────────┘                                             
@@ -1822,11 +1774,8 @@ Podemos usar un Gateway para un mejor control sobre las peticiones y seguimos va
      │      ┌───────────────┐      │   │    ┌───────────────┐        │                 │             
      │      │transferencias │      │   │    │transferencias │        │                 │             
      │      └───────────────┘      │   │    └───────────────┘        │                 │             
-     └──────────────┬──────────────┘   └────────────┬────────────────┘                 │             
-                    │                               │                                  │             
+     └──────────────┬──────────────┘   └────────────┬────────────────┘                 │                 
                     └──────────────┬────────────────┘                                  │             
-                                   │                                                   │             
-                                   │                                                   │             
                                    ▼                            solo lectura           ▼             
                                  ┌────┐                                             ┌────┐          
                                  │BDD │◀────────────────────────────────────────────│BDD │          
@@ -1850,11 +1799,6 @@ Podemos usar un Gateway para un mejor control sobre las peticiones y seguimos va
 "Un caso práctico"
 --uloff
 --boldoff
-
---boldon 
-¿Qué podemos hacer?
---boldoff     
-
 ---
 Si todo va bien,  damos de baja a la versión 1 del backend
 
@@ -1871,13 +1815,11 @@ Si todo va bien,  damos de baja a la versión 1 del backend
                        V2  │      ┌───────────────┐      │              │                     │
                            │      │ autenticación │      │     Rest     │posición consolidada │
                            │      └───────────────┘      │─ ─ ─ ─ ─ ─ ─▶│      REST API       │
-                           │                             │              │                     │
                            │                             │              └──────────┬──────────┘
                            │      ┌───────────────┐      │                         │           
                            │      │transferencias │      │                         │           
                            │      └───────────────┘      │                         │           
-                           └──────────────┬──────────────┘                         │           
-                                          │                                        │           
+                           └──────────────┬──────────────┘                         │                 
                                           ▼                  solo lectura          ▼           
                                         ┌────┐                                   ┌────┐        
                                         │BDD │◀──────────────────────────────────│BDD │        
@@ -1902,19 +1844,13 @@ Si todo va bien,  damos de baja a la versión 1 del backend
 "Un caso práctico"
 --uloff
 --boldoff
-
---boldon 
-¿Qué podemos hacer?
---boldoff     
-
 ---
 Si todo vsale bien, buscamos una forma de desconectar las bases de datos
 
                    ┌─────────────────────────────┐                               
                    │     Interfaz de Usuario     │                               
                    └─────────────┬───────────────┘                               
-                                 │  ▲                                            
-                                 ▼  │                                            
+                                 ▼  ▲                                            
                    ┌────────────────┴────────────┐                               
                    │           Gateway           │                               
                    └──────────────┬──────────────┘                               
@@ -1923,8 +1859,7 @@ Si todo vsale bien, buscamos una forma de desconectar las bases de datos
                V2  │      ┌───────────────┐      │        │                     │
                    │      │ autenticación │      │ Rest   │posición consolidada │
                    │      └───────────────┘      ├───────▶│      REST API       │
-                   │                             │        └──────────┬──────────┘
-                   │      ┌───────────────┐      │                   │           
+                   │      ┌───────────────┐      │        └──────────┬──────────┘
                    │      │transferencias │      │                   │           
                    │      └───────────────┘      │                   │           
                    └──────────────┬──────────────┘                   │                
