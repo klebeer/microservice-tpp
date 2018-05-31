@@ -1867,3 +1867,105 @@ Si todo vsale bien, buscamos una forma de desconectar las bases de datos
                                 ┌────┐                             ┌────┐        
                                 │BDD │                             │BDD │        
                                 └────┘                             └────┘        
+
+
+--newpage Microservicios21
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico"
+--uloff
+--boldoff
+---
+
+Si todo va bien, continuamos con el próximo servicio :)
+
+
+
+--newpage Microservicios21
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico Conclusiones"
+--uloff
+--boldoff
+---
+
+* Hacer microservicios no es nada fácil y tampoco es barato
+
+---
+* La “arquitectura” de microservicios tiene que ver más con los procesos técnicos de empaquetado y operaciones que con el diseño intrínseco del sistema.
+
+---
+* Los límites apropiados de los componentes continúan siendo uno de los retos más importantes.
+
+---
+* La experiencia en DevOps CI/CD es primordial
+
+---
+* Mantengamos nuestras arquitecturas simples, identifiquemos limites apropiados de los componentes.
+
+---
+* Es mejor empezar con un monolítico bien diseñado, que pueda desacoplar funcionalidades,  que tener  un espagueti de servicios difícil de controlar
+
+
+
+--newpage Microservicios21
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico Conclusiones"
+--uloff
+--boldoff
+---
+
+
+
+                                                                                
+                                                                                
+                                                                                
+                _____                            _           ___                
+               |  __ \                          | |         |__ \               
+               | |__) | __ ___  __ _ _   _ _ __ | |_ __ _ ___  ) |              
+               |  ___/ '__/ _ \/ _` | | | | '_ \| __/ _` / __|/ /               
+               | |   | | |  __/ (_| | |_| | | | | || (_| \__ \_|                
+               |_|   |_|  \___|\__, |\__,_|_| |_|\__\__,_|___(_)                
+                                __/ |                                           
+                               |___/                                            
+                                                                                
+                                                                                
+
+
