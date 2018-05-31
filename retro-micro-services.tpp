@@ -131,6 +131,11 @@ Palabra de moda: "Microservices Architecture"
 
 --exec sh images.sh images/microBuzz2.png
 
+
+---
+
+--exec sh images.sh images/microbuzz3.png
+
 --newpage BOA4
 --fgcolor green
 --boldon
@@ -777,6 +782,39 @@ Enrutamiento y Descubrimiento
                      └────────────────────────┘             └────────────────────────┘   
 
 
+
+--newpage Microservicios13
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+Enrutamiento y Descubrimiento
+--uloff
+--boldoff                 
+
+
+---
+* Consul (https://www.consul.io/)  Service Discovery and Configuration Made Easy
+
+---
+* Eureka  (https://github.com/Netflix/eureka)  REST based service used for locating services 
+                                               for the purpose of load balancing and failover of middle-tier servers.
+
+---
+* Zookeeper (https://stackshare.io/zookeeper) Because coordinating distributed systems is a Zoo
+
+
+
 --newpage Microservicios14
 --fgcolor green
 --boldon
@@ -823,7 +861,8 @@ Resiliencia del cliente
                         └────────────────────────┘             └────────────────────────┘    
 
 
---newpage Microservicios15
+
+--newpage Microservicios14
 --fgcolor green
 --boldon
 --huge Microservicios
@@ -841,33 +880,16 @@ Resiliencia del cliente
 Resiliencia del cliente
 --uloff
 --boldoff                 
----
-                                  ┌─────────────┐           ┌────────────────┐                
-                                  │ Cliente Web │           │Microservicio A │                
-                                  └─────────────┘           └────────────────┘                
-                                         │     ┌────────────────┐    │                        
-                                         │     │  Balanceo del  │    │                        
-                                         └────▶│lado del cliente│◀───┘                        
-                                               ├────────────────┤                             
-                                               │Circuit breaker │                             
-                                               ├────────────────┤                             
-                                               │    Fallback    │                             
-                                               ├────────────────┤                             
-                                               │    Bulkhead    │                             
-                                               ├────────────────┤                             
-                                     ┌─────────┘     ▲     ▲    └───────────┐                 
-                                     │               │     │                │                 
-                                     ▼               │     │                ▼                 
-                        ┌────────────────────────┐   │     │   ┌────────────────────────┐     
-                        │    Microservicio B     │   │     │   │    Microservicio C     │     
-                        │      2 instancias      ├───┘     └───┤      2 instancias      │     
-                        │ ┌─────────┐┌─────────┐ │             │ ┌─────────┐┌─────────┐ │     
-                        │ │         ││         │ │             │ │         ││         │ │     
-                        │ │x.x.0.10 ││x.x.0.11 │ │             │ │x.x.1.30 ││x.x.1.41 │ │     
-                        │ │         ││         │ │             │ │         ││         │ │     
-                        │ └─────────┘└─────────┘ │             │ └─────────┘└─────────┘ │     
-                        └────────────────────────┘             └────────────────────────┘                           
 
+
+---
+* Resilience4j (https://github.com/resilience4j/resilience4j) Fault tolerance library designed for Java8 and functional programming
+
+---
+* Hystrix (https://github.com/Netflix/Hystrix) Latency and Fault Tolerance for Distributed Systems
+
+---
+--exec sh images.sh images/resilence.png
 
 --newpage Microservicios16
 --fgcolor green
@@ -900,13 +922,89 @@ Seguridad
 * Asegurar APIs y aplicaciones
 
 ---
-* No confiar en datos externos ... validar / codificar / sanitizar
+* No confiar en datos externos, validar / codificar / sanitizar
 
 ---
 * Serialización / Deserialización segura
 
 ---
 * Compartir "Secrets" de forma segura
+
+
+
+--newpage Microservicios16
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+Seguridad 
+--uloff
+--boldoff                 
+
+
+--boldon 
+---
+Malas Ideas:
+--boldoff  
+
+---
+* Credenciales en el código fuente
+
+---
+* Credenciales en Dockerfiles
+
+---
+* Usar variables de entorno para pasar credenciales
+
+
+
+--newpage Microservicios16
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+Seguridad 
+--uloff
+--boldoff                 
+
+
+--boldon 
+---
+Opciones:
+--boldoff  
+
+---
+* Kubernetes -> native secrets management API
+  http://kubernetes.io/docs/user-guide/secrets
+
+---
+* Docker/Swarm
+  Secret Management https://github.com/docker/docker/pull/27794
+
+---
+* DC/OS - Secrets API
+  https://docs.mesosphere.com/1.8/administration/secrets/secrets-api/
+
 
 
 
@@ -956,6 +1054,38 @@ Logging y tracing
                          └───────┘                `─────'                              
 
 
+
+--newpage Microservicios17
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+Logging y tracing
+--uloff
+--boldoff                 
+
+
+
+---
+* Cloud Sleuth (https://cloud.spring.io/spring-cloud-sleuth/) Spring Cloud Sleuth implements a distributed tracing solution for Spring Cloud
+
+---
+* Zipkin (https://zipkin.io) Distributed tracing system
+
+---
+* ELK Stack (https://www.elastic.co/elk-stack) Elasticsearch, Logstash, and Kibana
+
+
 --newpage Microservicios18
 --fgcolor green
 --boldon
@@ -988,6 +1118,54 @@ Compilación y despliegue
  
 
 
+
+--newpage Microservicios18
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+Compilación y despliegue
+--uloff
+--boldoff       
+
+---          
+  ┌───────────┬───────────────────────┬───────────────────────┬────────────────────┬──────────────────────┐ 
+  │Compilación│        Pruebas        │Empaquetamiento/desplie│Creación de Imagenes│Commit repo a Registry│ 
+  │           │ unitarias/integración │   gue de artefactos   │                    │                      │ 
+  └───────────┴───────────────────────┴───────────────────────┴────────────────────┴──────────────────────┘ 
+                             ┌────────────────────────────────────────────────┐                              
+                             │              prueba de plataforma              │                              
+                             └────────────────────────────────────────────────┘                              
+     Desarrollo              ┌────────────────────────────────────────────────┐                              
+                             │ Despliegue imagen / nuevo servidor desplegado  │                              
+                             └────────────────────────────────────────────────┘                              
+ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
+                             ┌────────────────────────────────────────────────┐                              
+                             │              prueba de plataforma              │                              
+                             └────────────────────────────────────────────────┘                              
+      Pruebas                ┌────────────────────────────────────────────────┐                              
+                             │ Despliegue imagen / nuevo servidor desplegado  │                              
+                             └────────────────────────────────────────────────┘                              
+ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
+                             ┌────────────────────────────────────────────────┐                              
+                             │              prueba de plataforma              │                              
+                             └────────────────────────────────────────────────┘                              
+     Producción              ┌────────────────────────────────────────────────┐                              
+                             │ Despliegue imagen / nuevo servidor desplegado  │                              
+                             └────────────────────────────────────────────────┘                              
+
+
+
 --newpage Microservicios19
 --fgcolor green
 --boldon
@@ -1003,10 +1181,716 @@ Compilación y despliegue
 
 --boldon 
 --ulon
-"Un Caso Práctico"
+Frameworks de Java populares
 --uloff
 --boldoff                 
 
 
 
----                                                                                              
+---
+* Spring Boot (https://spring.io/projects/spring-boot)
+
+---
+* Dropwizard (https://www.dropwizard.io/1.3.2/docs/)
+
+---
+* WildFly Swarm (http://wildfly-swarm.io)
+
+---
+* Istio (https://istio.io)
+
+---
+* Karaf (https://karaf.apache.org)
+
+---
+* Netflix OSS (https://netflix.github.io)
+
+---
+* Docker (https://www.docker.com)
+
+---
+* Kubernetes (https://kubernetes.io)
+
+
+
+
+--newpage Microservicios20
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico"
+--uloff
+--boldoff
+
+--boldon 
+Antecedentes:
+--boldoff     
+
+---
+* Imaginemos un banco grande que ya tiene sus sistemas monolíticos funcionando mal o bien.
+
+---
+* Los días picos, como quincenas, fin de mes y feriados siempre tienen problemas especialmente en la banca en línea.
+
+---
+* Según las estadísticas, las funcionalidades de consulta de autenticación, posición consolidada, transferencias son las que más peticiones tienen en horas pico.
+
+---
+* La banca en línea es un war que tiene todas las funcionalidades embebidas, más de 12 años código espagueti.
+
+---
+* El banco funciona en silos, las áreas de desarrollo, release y operaciones no trabajan en equipo, utilizan un proceso manual y en cascada para la puesta en producción.
+
+---
+* El core bancario es un Monolítico escrito en Cobol que funciona en un MainFrame
+
+---
+* El banco también escucho de los beneficios de usar microservicios y quiere subirse al tren  de la modernidad.
+
+
+--newpage Microservicios20
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico"
+--uloff
+--boldoff
+
+--boldon 
+¿Qué problemas vemos?
+--boldoff     
+
+
+---
+* No tienen experiencia en CI/CD, DevOps, Contenedores
+
+---
+* Las transferencias requieren atomicidad 
+
+---
+* Tiene dependencias de aplicaciones monolíticas
+
+
+
+---
+--beginoutput
+¿Es prudente hacer microservicios en este escenario?
+--endoutput
+
+
+
+--newpage Microservicios20
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico"
+--uloff
+--boldoff
+
+--boldon 
+¿Qué podemos hacer?
+--boldoff     
+
+
+---
+Empezar con pasos pequeños:  
+
+---
+* La aplicación no usa un building tool -->  Maven o Gradle
+
+---
+* No versionamos los artefactos --> maven release plugin,  Semantic Versioning https://semver.org
+
+---
+* No realizamos despliegue de los artefactos compilados --> Nexus, Artifactory
+
+---
+* No utilizamos herramientas de Integración y Despliegue continuo: Jenkins
+
+---
+* No realizamos pruebas unitarias --> Empecemos con realizar pruebas a los issues nuevos.
+
+---
+* No realizamos funcionales automáticas --> Selenium, Cucumber.
+
+
+
+
+--newpage Microservicios21
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico"
+--uloff
+--boldoff
+
+--boldon 
+¿Qué podemos hacer?
+--boldoff     
+
+
+
+---
+
+Siguientes pasos:
+
+---
+* Crear una imagen de Docker del monolítico.
+
+---
+* Empezar a utilizar en ambientes de desarrollo y pruebas la imagen
+
+---
+* Desplegar la imagen de Docker a un Docker Registry.
+
+---
+* Si todo va bien, podemos empezar a realizar en producción una mezcla de instancias de servidores y contenedores.
+
+---
+* Si todo va bien, orquestemos con kubernetes
+
+
+--newpage Microservicios21
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico"
+--uloff
+--boldoff
+
+--boldon 
+¿Qué podemos hacer?
+--boldoff 
+
+---  
+Esto es lo que queremos:
+
+
+                                          │                                    
+                  Monolítico              │        Microservicios              
+         ┌─────────────────────────────┐  │                                    
+         │      ┌───────────────┐      │  │   ┌─────────────────────┐    ┌────┐
+         │      │ autenticación │      │  │   │    autenticación    ├───▶│BDD │
+         │      └───────────────┘      │  │   └─────────────────────┘    └────┘
+         │   ┌─────────────────────┐   │  │   ┌─────────────────────┐    ┌────┐
+         │   │posición consolidada │   │  │   │posición consolidada ├───▶│BDD │
+         │   └─────────────────────┘   │  │   └─────────────────────┘    └────┘
+         │      ┌───────────────┐      │  │   ┌─────────────────────┐    ┌────┐
+         │      │transferencias │      │  │   │   transferencias    ├───▶│BDD │
+         │      └───────────────┘      │  │   └─────────────────────┘    └────┘
+         └──────────────┬──────────────┘  │                                    
+                        │                 │                                    
+                        ▼                                                      
+                      ┌────┐                                                   
+                      │BDD │                                                   
+                      └────┘                                                               
+
+
+
+
+
+--newpage Microservicios21
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico"
+--uloff
+--boldoff
+
+--boldon 
+¿Qué podemos hacer?
+--boldoff     
+
+---
+Separamos la interfaz de usuario, debería verse exactamente igual a la original:                                                             
+
+              ┌─────────────────────────────┐                                  
+              │     Interfaz de Usuario     │                                  
+              └──────────────┬──────────────┘                                  
+                             │   Rest                                              
+                             ▼                                                 
+              ┌─────────────────────────────┐                                  
+              │      ┌───────────────┐      │                                  
+              │      │ autenticación │      │                                  
+              │      └───────────────┘      │                                  
+              │   ┌─────────────────────┐   │                                  
+              │   │posición consolidada │   │     Es el mismo Monolítico  
+              │   └─────────────────────┘   │     anterior sin modificar nada                            
+              │      ┌───────────────┐      │                                  
+              │      │transferencias │      │                                  
+              │      └───────────────┘      │                                  
+              └──────────────┬──────────────┘                                  
+                             │                                                 
+                             ▼                                                 
+                           ┌────┐                                              
+                           │BDD │                                              
+                           └────┘                                           
+
+--newpage Microservicios21
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico"
+--uloff
+--boldoff
+
+--boldon 
+¿Qué podemos hacer?
+--boldoff     
+
+---
+Primer paso a producción:
+
+                               ┌──────────────────────┐                        
+                               │ Balanceador de Carga │                        
+                               └───────────┬──────────┘                        
+                                           │                                   
+                ┌──────────────────────────┤                                   
+                │                          │                                   
+                ▼                          ▼                                   
+ ┌─────────────────────────────┐ ┌─────────────────────────────┐               
+ │     Interfaz de Usuario     │ │      ┌───────────────┐      │               
+ └──────────────────────┬──────┘ │      │ autenticación │      │               
+                        │        │      └───────────────┘      │               
+                        │        │   ┌─────────────────────┐   │     Es el mismo Monolítico             
+                        └───────▶│   │posición consolidada │   │     anterior sin modificar nada          
+                 Rest            │   └─────────────────────┘   │               
+                                 │      ┌───────────────┐      │               
+                                 │      │transferencias │      │               
+                                 │      └───────────────┘      │               
+                                 └──────────────┬──────────────┘               
+                                                │                              
+                                                ▼                              
+                                              ┌────┐                           
+                                              │BDD │                           
+                                              └────┘                          
+
+
+--newpage Microservicios21
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico"
+--uloff
+--boldoff
+
+--boldon 
+¿Qué podemos hacer?
+--boldoff     
+
+---
+Segundo paso a producción, quitamos la vieja Interfaz de Usuario:
+
+                                       ┌─────────────────────────────┐         
+                                       │     Interfaz de Usuario     │         
+                                       └─────────────┬───────────────┘         
+                                                     │                         
+                                                     ▼                         
+                                       ┌─────────────────────────────┐         
+                                       │      ┌───────────────┐      │         
+                                       │      │ autenticación │      │         
+                                       │      └───────────────┘      │         
+                                       │   ┌─────────────────────┐   │         
+                                       │   │posición consolidada │   │         
+                                       │   └─────────────────────┘   │         
+                                       │      ┌───────────────┐      │         
+                                       │      │transferencias │      │         
+                                       │      └───────────────┘      │         
+                                       └──────────────┬──────────────┘         
+                                                      │                        
+                                                      ▼                        
+                                                    ┌────┐                     
+                                                    │BDD │                     
+                                                    └────┘                   
+
+--newpage Microservicios21
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico"
+--uloff
+--boldoff
+
+--boldon 
+¿Qué podemos hacer?
+--boldoff     
+
+---
+Creamos un nuevo servicio independiente de posición consolidada
+
+                                         ┌─────────────────────────────┐                           
+                                         │     Interfaz de Usuario     │                           
+                                         └─────────────┬───────────────┘                           
+                                                       │                                           
+                                                       ▼                                           
+                                         ┌─────────────────────────────┐                           
+                                         │      ┌───────────────┐      │                           
+                                         │      │ autenticación │      │                           
+                                         │      └───────────────┘      │                           
+                                         │   ┌─────────────────────┐   │    ┌─────────────────────┐
+                                         │   │posición consolidada │   │    │posición consolidada │
+                                         │   └─────────────────────┘   │    └──────────┬──────────┘
+                                         │      ┌───────────────┐      │               │           
+                                         │      │transferencias │      │               │           
+                                         │      └───────────────┘      │               │           
+                                         └──────────────┬──────────────┘               │           
+                                                        │                              │           
+                                                        ▼                              ▼           
+                                                      ┌────┐                         ┌────┐        
+                                                      │BDD │                         │BDD │        
+                                                      └────┘                         └────┘        
+
+--newpage Microservicios21
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico"
+--uloff
+--boldoff
+
+--boldon 
+¿Qué podemos hacer?
+--boldoff     
+
+---
+Creamos un nuevo servicio independiente de posición consolidada
+
+                                         ┌─────────────────────────────┐                           
+                                         │     Interfaz de Usuario     │                           
+                                         └─────────────┬───────────────┘                           
+                                                       │                                           
+                                                       ▼                                           
+                                         ┌─────────────────────────────┐                           
+                                         │      ┌───────────────┐      │    ┌─────────────────────┐
+                                         │      │ autenticación │      │    │                     │
+                                         │      └───────────────┘      │    │posición consolidada │
+                                         │   ┌─────────────────────┐   │    │      REST API       │
+                                         │   │posición consolidada │   │    │                     │
+                                         │   └─────────────────────┘   │    └──────────┬──────────┘
+                                         │      ┌───────────────┐      │               │           
+                                         │      │transferencias │      │               │           
+                                         │      └───────────────┘      │               │           
+                                         └──────────────┬──────────────┘               │           
+                                                        │                              │           
+                                                        ▼                              ▼           
+                                                      ┌────┐                         ┌────┐        
+                                                      │BDD │◀────────────────────────│BDD │        
+                                                      └────┘      solo lectura       └────┘        
+                                                                                       
+
+--newpage Microservicios21
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico"
+--uloff
+--boldoff
+
+--boldon 
+¿Qué podemos hacer?
+--boldoff     
+
+---
+Tercer paso a producción, servicio independiente de posición consolidada (dark launch)
+
+                          ┌─────────────────────────────┐                                           
+                          │     Interfaz de Usuario     │                                           
+                          └──────────────┬──────────────┘                                           
+         V1           ┌──────────────────┴──────────────┐        V2                                 
+                      ▼                                 ▼                                           
+       ┌─────────────────────────────┐   ┌─────────────────────────────┐     ┌─────────────────────┐
+       │      ┌───────────────┐      │   │    ┌───────────────┐        │     │                     │
+       │      │ autenticación │      │   │    │ autenticación │        │     │posición consolidada │
+       │      └───────────────┘      │   │    └───────────────┘        ├ ─ ─▶│      REST API       │
+       │   ┌─────────────────────┐   │   │                             │     │                     │
+       │   │posición consolidada │   │   │                             │     └──────────┬──────────┘
+       │   └─────────────────────┘   │   │                             │                │           
+       │      ┌───────────────┐      │   │    ┌───────────────┐        │                │           
+       │      │transferencias │      │   │    │transferencias │        │                │           
+       │      └───────────────┘      │   │    └───────────────┘        │                │           
+       └──────────────┬──────────────┘   └────────────┬────────────────┘                │           
+                      │                               │                                 │           
+                      └──────────────┬────────────────┘                                 │           
+                                     │                                                  │           
+                                     ▼                            solo lectura          ▼           
+                                   ┌────┐                                             ┌────┐        
+                                   │BDD │◀────────────────────────────────────────────│BDD │        
+                                   └────┘                                             └────┘        
+
+--newpage Microservicios21
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico"
+--uloff
+--boldoff
+
+--boldon 
+¿Qué podemos hacer?
+--boldoff     
+
+---
+Podemos usar un Gateway para un mejor control sobre las peticiones y seguimos validando
+                        ┌─────────────────────────────┐                                             
+                        │     Interfaz de Usuario     │                                             
+                        └─────────────┬───────────────┘                                             
+                                      │  ▲                                                          
+                                      ▼  │                                                          
+                        ┌────────────────┴────────────┐                                             
+                        │           Gateway           │                                             
+                        └──────────────┬──────────────┘                                             
+       V1           ┌──────────────────┴──────────────┐        V2                                   
+                    ▼                                 ▼                                             
+     ┌─────────────────────────────┐   ┌─────────────────────────────┐     ┌─────────────────────┐  
+     │      ┌───────────────┐      │   │    ┌───────────────┐        │     │                     │  
+     │      │ autenticación │      │   │    │ autenticación │        │     │posición consolidada │  
+     │      └───────────────┘      │   │    └───────────────┘        ├ ─ ─▶│      REST API       │  
+     │   ┌─────────────────────┐   │   │                             │     │                     │  
+     │   │posición consolidada │   │   │                             │     └──────────┬──────────┘  
+     │   └─────────────────────┘   │   │                             │                │             
+     │      ┌───────────────┐      │   │    ┌───────────────┐        │                │             
+     │      │transferencias │      │   │    │transferencias │        │                │             
+     │      └───────────────┘      │   │    └───────────────┘        │                │             
+     └──────────────┬──────────────┘   └────────────┬────────────────┘                │             
+                    │                               │                                 │             
+                    └──────────────┬────────────────┘                                 │             
+                                   │                                                  │             
+                                   │                                                  │             
+                                   ▼                            solo lectura          ▼             
+                                 ┌────┐                                             ┌────┐          
+                                 │BDD │◀────────────────────────────────────────────│BDD │          
+                                 └────┘                                             └────┘          
+
+--newpage Microservicios21
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico"
+--uloff
+--boldoff
+
+--boldon 
+¿Qué podemos hacer?
+--boldoff     
+
+---
+Si todo va bien,  damos de baja a la versión 1 del backend
+
+                           ┌─────────────────────────────┐                                     
+                           │     Interfaz de Usuario     │                                     
+                           └─────────────┬───────────────┘                                     
+                                         │  ▲                                                  
+                                         ▼  │                                                  
+                           ┌────────────────┴────────────┐                                     
+                           │           Gateway           │                                     
+                           └──────────────┬──────────────┘                                     
+                                          ▼                                                    
+                           ┌─────────────────────────────┐              ┌─────────────────────┐
+                       V2  │      ┌───────────────┐      │              │                     │
+                           │      │ autenticación │      │              │posición consolidada │
+                           │      └───────────────┘      │─ ─ ─ ─ ─ ─ ─▶│      REST API       │
+                           │                             │              │                     │
+                           │                             │              └──────────┬──────────┘
+                           │      ┌───────────────┐      │                         │           
+                           │      │transferencias │      │                         │           
+                           │      └───────────────┘      │                         │           
+                           └──────────────┬──────────────┘                         │           
+                                          │                                        │           
+                                          ▼                  solo lectura          ▼           
+                                        ┌────┐                                   ┌────┐        
+                                        │BDD │◀──────────────────────────────────│BDD │        
+                                        └────┘                                   └────┘        
+
+
+--newpage Microservicios21
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+"Un caso práctico"
+--uloff
+--boldoff
+
+--boldon 
+¿Qué podemos hacer?
+--boldoff     
+
+---
+Si todo vsale bien, buscamos una forma de desconectar las bases de datos
+
+                   ┌─────────────────────────────┐                               
+                   │     Interfaz de Usuario     │                               
+                   └─────────────┬───────────────┘                               
+                                 │  ▲                                            
+                                 ▼  │                                            
+                   ┌────────────────┴────────────┐                               
+                   │           Gateway           │                               
+                   └──────────────┬──────────────┘                               
+                                  ▼                                              
+                   ┌─────────────────────────────┐        ┌─────────────────────┐
+               V2  │      ┌───────────────┐      │        │                     │
+                   │      │ autenticación │      │        │posición consolidada │
+                   │      └───────────────┘      ├───────▶│      REST API       │
+                   │                             │        └──────────┬──────────┘
+                   │      ┌───────────────┐      │                   │           
+                   │      │transferencias │      │                   │           
+                   │      └───────────────┘      │                   │           
+                   └──────────────┬──────────────┘                   │           
+                                  │                                  │           
+                                  ▼                                  ▼           
+                                ┌────┐                             ┌────┐        
+                                │BDD │                             │BDD │        
+                                └────┘                             └────┘        
