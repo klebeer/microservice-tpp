@@ -1188,7 +1188,7 @@ Frameworks de Java populares
 
 
 ---
-* Spring Boot (https://spring.io/projects/spring-boot)
+* Spring Cloud (http://projects.spring.io/spring-cloud/)
 
 ---
 * Dropwizard (https://www.dropwizard.io/1.3.2/docs/)
@@ -1213,6 +1213,53 @@ Frameworks de Java populares
 
 
 
+--newpage Microservicios19
+--fgcolor green
+--boldon
+--huge Microservicios
+--ulon
+--horline
+--boldoff
+--uloff
+--boldon
+
+--fgcolor white
+
+
+--boldon 
+--ulon
+Frameworks  y herramientas Sugeridas 
+--uloff
+--boldoff                 
+
+
+
+---
+* Netflix Eureka: para  descubrimiento de servicios
+
+---
+* Consul: para guardar configuraciones, parámetros
+
+---
+* Zuul:  para ruteo inteligente y programable
+
+---
+* Netflix Ribbon: para balanceo de carga del lado del cliente
+
+---
+* Zipkin: para trazabilidad
+
+---
+* Turbine: para agregación de métricas 
+
+---
+* Netflix Feign: para implementar Clientes REST Declarativos
+
+---
+* Hystrix: circuit breaker
+
+---
+* RabbitMQ: broker de mensajería
 
 --newpage Microservicios20
 --fgcolor green
@@ -1572,7 +1619,6 @@ Segundo paso a producción, quitamos la vieja Interfaz de Usuario:
                                        ┌─────────────────────────────┐         
                                        │     Interfaz de Usuario     │         
                                        └─────────────┬───────────────┘         
-                                                     │                         
                                                      ▼                         
                                        ┌─────────────────────────────┐         
                                        │      ┌───────────────┐      │         
@@ -1585,7 +1631,6 @@ Segundo paso a producción, quitamos la vieja Interfaz de Usuario:
                                        │      │transferencias │      │         
                                        │      └───────────────┘      │         
                                        └──────────────┬──────────────┘         
-                                                      │                        
                                                       ▼                        
                                                     ┌────┐                     
                                                     │BDD │                     
@@ -1619,8 +1664,7 @@ Creamos un nuevo servicio independiente de posición consolidada
 
                                          ┌─────────────────────────────┐                           
                                          │     Interfaz de Usuario     │                           
-                                         └─────────────┬───────────────┘                           
-                                                       │                                           
+                                         └─────────────┬───────────────┘                                  
                                                        ▼                                           
                                          ┌─────────────────────────────┐                           
                                          │      ┌───────────────┐      │                           
@@ -1632,8 +1676,7 @@ Creamos un nuevo servicio independiente de posición consolidada
                                          │      ┌───────────────┐      │               │           
                                          │      │transferencias │      │               │           
                                          │      └───────────────┘      │               │           
-                                         └──────────────┬──────────────┘               │           
-                                                        │                              │           
+                                         └──────────────┬──────────────┘               │             
                                                         ▼                              ▼           
                                                       ┌────┐                         ┌────┐        
                                                       │BDD │                         │BDD │        
@@ -1667,8 +1710,7 @@ Creamos un nuevo servicio independiente de posición consolidada
 
                                          ┌─────────────────────────────┐                           
                                          │     Interfaz de Usuario     │                           
-                                         └─────────────┬───────────────┘                           
-                                                       │                                           
+                                         └─────────────┬───────────────┘                                 
                                                        ▼                                           
                                          ┌─────────────────────────────┐                           
                                          │      ┌───────────────┐      │    ┌─────────────────────┐
@@ -1681,7 +1723,6 @@ Creamos un nuevo servicio independiente de posición consolidada
                                          │      │transferencias │      │               │           
                                          │      └───────────────┘      │               │           
                                          └──────────────┬──────────────┘               │           
-                                                        │                              │           
                                                         ▼                              ▼           
                                                       ┌────┐                         ┌────┐        
                                                       │BDD │◀────────────────────────│BDD │        
@@ -1718,22 +1759,20 @@ Tercer paso a producción, servicio independiente de posición consolidada (dark
                           │     Interfaz de Usuario     │                                           
                           └──────────────┬──────────────┘                                           
          V1           ┌──────────────────┴──────────────┐        V2                                 
-                      ▼                                 ▼                                           
-       ┌─────────────────────────────┐   ┌─────────────────────────────┐     ┌─────────────────────┐
-       │      ┌───────────────┐      │   │    ┌───────────────┐        │     │                     │
-       │      │ autenticación │      │   │    │ autenticación │        │     │posición consolidada │
-       │      └───────────────┘      │   │    └───────────────┘        ├ ─ ─▶│      REST API       │
-       │   ┌─────────────────────┐   │   │                             │     │                     │
-       │   │posición consolidada │   │   │                             │     └──────────┬──────────┘
-       │   └─────────────────────┘   │   │                             │                │           
-       │      ┌───────────────┐      │   │    ┌───────────────┐        │                │           
-       │      │transferencias │      │   │    │transferencias │        │                │           
-       │      └───────────────┘      │   │    └───────────────┘        │                │           
-       └──────────────┬──────────────┘   └────────────┬────────────────┘                │           
-                      │                               │                                 │           
-                      └──────────────┬────────────────┘                                 │           
-                                     │                                                  │           
-                                     ▼                            solo lectura          ▼           
+                      ▼                Rest             ▼                                           
+       ┌─────────────────────────────┐   ┌─────────────────────────────┐      ┌─────────────────────┐
+       │      ┌───────────────┐      │   │    ┌───────────────┐        │      │                     │
+       │      │ autenticación │      │   │    │ autenticación │        │ Rest │posición consolidada │
+       │      └───────────────┘      │   │    └───────────────┘        ├ ─ ─ ▶│      REST API       │
+       │   ┌─────────────────────┐   │   │                             │      │                     │
+       │   │posición consolidada │   │   │                             │      └──────────┬──────────┘
+       │   └─────────────────────┘   │   │                             │                 │           
+       │      ┌───────────────┐      │   │    ┌───────────────┐        │                 │           
+       │      │transferencias │      │   │    │transferencias │        │                 │           
+       │      └───────────────┘      │   │    └───────────────┘        │                 │           
+       └──────────────┬──────────────┘   └────────────┬────────────────┘                 │           
+                      └──────────────┬────────────────┘                                  │           
+                                     ▼                            solo lectura           ▼           
                                    ┌────┐                                             ┌────┐        
                                    │BDD │◀────────────────────────────────────────────│BDD │        
                                    └────┘                                             └────┘        
@@ -1772,23 +1811,23 @@ Podemos usar un Gateway para un mejor control sobre las peticiones y seguimos va
                         │           Gateway           │                                             
                         └──────────────┬──────────────┘                                             
        V1           ┌──────────────────┴──────────────┐        V2                                   
-                    ▼                                 ▼                                             
-     ┌─────────────────────────────┐   ┌─────────────────────────────┐     ┌─────────────────────┐  
-     │      ┌───────────────┐      │   │    ┌───────────────┐        │     │                     │  
-     │      │ autenticación │      │   │    │ autenticación │        │     │posición consolidada │  
-     │      └───────────────┘      │   │    └───────────────┘        ├ ─ ─▶│      REST API       │  
-     │   ┌─────────────────────┐   │   │                             │     │                     │  
-     │   │posición consolidada │   │   │                             │     └──────────┬──────────┘  
-     │   └─────────────────────┘   │   │                             │                │             
-     │      ┌───────────────┐      │   │    ┌───────────────┐        │                │             
-     │      │transferencias │      │   │    │transferencias │        │                │             
-     │      └───────────────┘      │   │    └───────────────┘        │                │             
-     └──────────────┬──────────────┘   └────────────┬────────────────┘                │             
-                    │                               │                                 │             
-                    └──────────────┬────────────────┘                                 │             
-                                   │                                                  │             
-                                   │                                                  │             
-                                   ▼                            solo lectura          ▼             
+                    ▼                 Rest            ▼                                             
+     ┌─────────────────────────────┐   ┌─────────────────────────────┐      ┌─────────────────────┐  
+     │      ┌───────────────┐      │   │    ┌───────────────┐        │      │                     │  
+     │      │ autenticación │      │   │    │ autenticación │        │ Rest │posición consolidada │  
+     │      └───────────────┘      │   │    └───────────────┘        ├ ─ ─▶ │      REST API       │  
+     │   ┌─────────────────────┐   │   │                             │      │                     │  
+     │   │posición consolidada │   │   │                             │      └──────────┬──────────┘  
+     │   └─────────────────────┘   │   │                             │                 │             
+     │      ┌───────────────┐      │   │    ┌───────────────┐        │                 │             
+     │      │transferencias │      │   │    │transferencias │        │                 │             
+     │      └───────────────┘      │   │    └───────────────┘        │                 │             
+     └──────────────┬──────────────┘   └────────────┬────────────────┘                 │             
+                    │                               │                                  │             
+                    └──────────────┬────────────────┘                                  │             
+                                   │                                                   │             
+                                   │                                                   │             
+                                   ▼                            solo lectura           ▼             
                                  ┌────┐                                             ┌────┐          
                                  │BDD │◀────────────────────────────────────────────│BDD │          
                                  └────┘                                             └────┘          
@@ -1827,10 +1866,10 @@ Si todo va bien,  damos de baja a la versión 1 del backend
                            ┌────────────────┴────────────┐                                     
                            │           Gateway           │                                     
                            └──────────────┬──────────────┘                                     
-                                          ▼                                                    
+                                          ▼   Rest                                                 
                            ┌─────────────────────────────┐              ┌─────────────────────┐
                        V2  │      ┌───────────────┐      │              │                     │
-                           │      │ autenticación │      │              │posición consolidada │
+                           │      │ autenticación │      │     Rest     │posición consolidada │
                            │      └───────────────┘      │─ ─ ─ ─ ─ ─ ─▶│      REST API       │
                            │                             │              │                     │
                            │                             │              └──────────┬──────────┘
@@ -1879,17 +1918,16 @@ Si todo vsale bien, buscamos una forma de desconectar las bases de datos
                    ┌────────────────┴────────────┐                               
                    │           Gateway           │                               
                    └──────────────┬──────────────┘                               
-                                  ▼                                              
+                                  ▼   Rest                                           
                    ┌─────────────────────────────┐        ┌─────────────────────┐
                V2  │      ┌───────────────┐      │        │                     │
-                   │      │ autenticación │      │        │posición consolidada │
+                   │      │ autenticación │      │ Rest   │posición consolidada │
                    │      └───────────────┘      ├───────▶│      REST API       │
                    │                             │        └──────────┬──────────┘
                    │      ┌───────────────┐      │                   │           
                    │      │transferencias │      │                   │           
                    │      └───────────────┘      │                   │           
-                   └──────────────┬──────────────┘                   │           
-                                  │                                  │           
+                   └──────────────┬──────────────┘                   │                
                                   ▼                                  ▼           
                                 ┌────┐                             ┌────┐        
                                 │BDD │                             │BDD │        
